@@ -13,6 +13,11 @@ categories = ["visualization"]
 disciplines = ["chemistry"]
 compiler = "0.14.2"
 exclude = [
+  # Documentation files: committed to registry, viewable on Universe,
+  # but not downloaded when users install the package.
+  "examples",
+  # Remaining dev/build files are excluded via .typstignore and should
+  # never reach the registry, but are listed here as a safety net.
   ".github",
   "scripts",
   ".typstignore",

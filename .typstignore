@@ -1,11 +1,20 @@
-# Exclusions for the scripts/package tool when creating a distribution
-# for the Typst Universe registry.
+# Exclusions for the scripts/package tool.
 #
-# These files live in the repository but are not part of the published
-# package that users download via @preview/reshikist.
+# Guidelines: https://github.com/typst/packages/blob/main/docs/tips.md#what-to-commit-what-to-exclude
+#
+# Three groups of files:
+# 1. Required   — needed at runtime (NOT listed here)
+#    typst.toml, lib.typ, reshikist.wasm, LICENSE, LICENSE-APACHE, LICENSE-MIT,
+#    NOTICE, README.md
+#
+# 2. Documentation — viewable on Typst Universe, excluded from archive via
+#    typst.toml exclude: (NOT listed here)
+#    examples/*
+#
+# 3. Other — not needed by end users and not linked in README
+#    (listed below; these will not be committed to the registry repo at all)
 
 .github
 scripts
 Justfile
 CHANGELOG.md
-.typstignore
