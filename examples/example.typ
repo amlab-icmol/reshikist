@@ -20,18 +20,6 @@
 == Pyrrole with outlined text
 #chem-image("pyrrole.rsk", width: 30%, outline-text: true)
 
-== Custom font — live text with DejaVu Sans Mono
-#chem-image("font-test.rsk", width: 40%, fonts: ("test-font.ttf",))
-
-== Custom font — live text fallback (no font loaded)
-#chem-image("font-test.rsk", width: 40%)
-
-== Custom font — outlined text with DejaVu Sans Mono
-#chem-image("font-test.rsk", width: 40%, outline-text: true, fonts: ("test-font.ttf",))
-
-== Custom font — outlined text fallback
-#chem-image("font-test.rsk", width: 40%, outline-text: true)
-
 == MOL file (benzene)
 #chem-image("benzene.mol", width: 25%)
 
@@ -48,5 +36,5 @@
 #chem-image("CCO.O=C=O>>CCOC(=O)O", format: "rsmi", width: 40%)
 
 == Configuration example — set defaults once with .with()
-#let my-chem = chem-image.with(outline-text: true, fonts: ("test-font.ttf",))
+#let my-chem = chem-image.with(outline-text: true)
 #my-chem("pyrrole.rsk", width: 30%)
