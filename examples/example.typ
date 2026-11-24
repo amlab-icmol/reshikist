@@ -1,4 +1,4 @@
-#import "../lib.typ": chem-image
+#import "@preview/reshikist:0.3.2": chem-image
 
 = ReShiki Typst Plugin Test
 
