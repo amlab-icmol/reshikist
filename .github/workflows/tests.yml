@@ -1,0 +1,40 @@
+name: Tests
+on: [push, pull_request]
+
+jobs:
+  lint-and-test:
+    name: Verify package
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Check typst.toml
+        run: |
+          if [ ! -f typst.toml ]; then
+            echo "typst.toml is missing" >&2
+            exit 1
+          fi
+          if ! grep -q '^name = "reshikist"' typst.toml; then
+            echo "typst.toml does not contain expected package name" >&2
+            exit 1
+          fi
+
+      - name: Check required files exist
+        run: |
+          for f in lib.typ reshikist.wasm README.md LICENSE LICENSE-APACHE LICENSE-MIT NOTICE; do
+            if [ ! -f "$f" ]; then
+              echo "Required file missing: $f" >&2
+              exit 1
+            fi
+          done
+
+      - name: Check script executability
+        run: |
+          for s in scripts/package scripts/setup scripts/uninstall; do
+            if [ ! -x "$s" ]; then
+              echo "Script is not executable: $s" >&2
+              exit 1
+            fi
+          done

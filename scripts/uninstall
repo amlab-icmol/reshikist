@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -eu
+
+# Adapted from https://github.com/johannes-wolf/cetz/blob/35c0868378cea5ad323cc0d9c2f76de8ed9ba5bd/scripts/package
+# Licensed under Apache License 2.0
+
+. "$(dirname "${BASH_SOURCE[0]}")/setup"
+
+if (( $# < 1 )) || [[ "${1:-}" == "help" ]]; then
+  echo "uninstall TARGET"
+  echo ""
+  echo "Removes the package from the local Typst package directory."
+  echo "TARGET can be @local or @preview."
+  exit 1
+fi
+
+TARGET="$(resolve-target "${1:?Missing target path, @local or @preview}")"
+TARGET="${TARGET:?}/${PKG_PREFIX:?}/${VERSION:?}"
+
+echo "Removing ${TARGET:?} …"
+rm -rf "${TARGET:?}"
+echo "Done."
